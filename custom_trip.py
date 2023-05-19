@@ -5,7 +5,7 @@ import time
 import re
 from nltk.tokenize import sent_tokenize
 
-openai.api_key = "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"
+openai.api_key = ''
 
 # Configure logging
 logging.basicConfig(filename='app.log', level=logging.DEBUG)
