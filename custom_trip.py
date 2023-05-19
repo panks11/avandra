@@ -102,16 +102,6 @@ def answer():
         logging.info(ai_response)
 
         response_list = re.split(r'\d+\.\s+', ai_response)[1:]
-
-        # Use regular expression to extract the sentences and remove the serial numbers
-        #sentences = sent_tokenize(ai_response)      
-
-        # Remove the serial numbers from each sentence
-        # response_list = [re.sub(r"^\d+\.\s*", "", sentence) for sentence in sentences]
-        # response_list = [res for res in response_list if len(res) > 1]
-        # response_list = list(set(response_list))
-
-
         logging.info(response_list)
         # Create a prompt
         location = responses['Where are you planning your trip?']
