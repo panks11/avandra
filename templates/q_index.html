@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DreamTrip Planner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .question-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-weight: bold;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-form {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .input-form input[type="text"] {
+            width: 400px;
+            height: 40px;
+            font-size: 16px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px;
+        }
+
+        .answer {
+            font-style: italic;
+        }
+
+        .recommendation-container {
+            margin-bottom: 20px;
+        }
+
+        .weather-container {
+            margin-top: 40px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>DreamTrip Planner</h1>
+
+    {% if question %}
+    <div class="question-container">
+        <span class="question">{{ question }}</span><br>
+        <form action="/answer" method="POST" class="input-form">
+            <input type="hidden" name="question" value="{{ question }}">
+            <input type="text" name="response" placeholder="Enter your response">
+            <input type="submit" value="Next">
+        </form>
+    </div>
+    {% else %}
+    <div class="recommendation-container">
+        <h2>Generated Recommendation:</h2>
+        {% for response in responses[0] %}
+        <div class="question-container">
+            <span class="answer">{{ response }}</span><br>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="weather-container">
+        <h2>Weather Overview:</h2>
+        {% for response in responses[1] %}
+        <div class="question-container">
+            <span class="answer">{{ response }}</span><br>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</body>
+</html>
