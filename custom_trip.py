@@ -3,9 +3,10 @@ import logging
 import openai
 import time
 import re
+import os
 from nltk.tokenize import sent_tokenize
 
-openai.api_key = ''
+openai.api_key = os.environ.get('gpt_key')
 
 # Configure logging
 logging.basicConfig(filename='app.log', level=logging.DEBUG)
@@ -62,7 +63,7 @@ def get_response(response):
 
 import requests
 
-api_key = "66e7d0ea30faefe6e1b0784b959acb7c"
+api_key = os.environ.get('weather_api')
 
 def get_weather_data(city):
     """Makes an API request to a URL and returns the data as a Python object.
